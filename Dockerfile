@@ -1,24 +1,34 @@
-#-------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
-#-------------------------------------------------------------------------------------------------------------
+# Licensed under the MIT License. See LICENSE in the project root for license information.
+#-----------------------------------------------------------------------------------------
 
-FROM python:3.7
+FROM python:3
 
-ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
+# Copy default endpoint specific user settings overrides into container to specify Python path
+COPY .devcontainer/settings.vscode.json /root/.vscode-remote/data/Machine/settings.json
 
-RUN apt-get update \
-    && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
+ENV PYTHONUNBUFFERED 1
 
-    && apt-get -y install git iproute2 procps lsb-release \
+RUN mkdir /workspace
+WORKDIR /workspace
 
-    ~~~
+ENV SHELL /bin/bash
 
-    && groupadd --gid $USER_GID $USERNAME \
-    && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
+# Install node for building the front end
+RUN apt-get update
+RUN apt-get -y install curl gnupg
+RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash -
+RUN apt-get -y install nodejs
 
-    && apt-get install -y sudo \
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
-    && chmod 0440 /etc/sudoers.d/$USERNAME \
+# Install git, process tools
+RUN apt-get update && apt-get -y install git procps
+
+# Install Python dependencies from requirements.txt if it exists
+COPY .devcontainer/requirements.txt.temp requirements.txt* /workspace/
+RUN if [ -f "requirements.txt" ]; then pip install -r requirements.txt && rm requirements.txt; fi
+
+# Clean up
+RUN apt-get autoremove -y \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
