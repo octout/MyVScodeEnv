@@ -1,18 +1,18 @@
 {
   "settings": { 
-  "workbench.colorTheme": "Default Dark+",
-  "codespaces.defaultExtensions": [
-        "ms-vsonline.vsonline",
-        "GitHub.vscode-pull-request-github",
-        "ms-vsliveshare.vsliveshare",
-        "visualstudioexptteam.vscodeintellicode",
-        "ms-python.python",
-        "esbenp.prettier-vscode",
-        "eamodio.gitlens",
-        "ms-azuretools.vscode-docker",
-        "coenraads.bracket-pair-colorizer",
-        "ms-vscode.azure-account",
-        "ms-vscode.vscode-node-azure-pack",
-    ]
+    "workbench.colorTheme": "Default Dark+",
+    "codespaces.defaultExtensions": [
+          "ms-vsonline.vsonline",
+          "GitHub.vscode-pull-request-github",
+          "ms-vsliveshare.vsliveshare",
+          "visualstudioexptteam.vscodeintellicode",
+          "ms-python.python",
+          "esbenp.prettier-vscode",
+          "eamodio.gitlens",
+          "ms-azuretools.vscode-docker",
+          "coenraads.bracket-pair-colorizer",
+          "ms-vscode.azure-account",
+          "ms-vscode.vscode-node-azure-pack",
+      ]
   }
 }
