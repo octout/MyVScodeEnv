@@ -1,6 +1,11 @@
 {
-  "extensions": ["ms-python.python"],
-  "extensions": ["esbenp.prettier-vscode"],
-  "extensions": ["eamodio.gitlens"],
-  "extensions": ["coenraads.bracket-pair-colorizer"],
+  "extensions": [
+     "ms-python.python",
+     "esbenp.prettier-vscode",
+     "eamodio.gitlens",
+     "ms-azuretools.vscode-docker",
+     "coenraads.bracket-pair-colorizer",
+     "ms-vscode.azure-account",
+     "ms-vscode.vscode-node-azure-pack",
+  ]
 }
