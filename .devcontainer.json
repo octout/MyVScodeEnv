@@ -1,4 +1,7 @@
 {
+  "name": "Python 3",
+  "context": "..",
+  "dockerFile": "Dockerfile",
   "extensions": [
      "ms-python.python",
      "esbenp.prettier-vscode",
@@ -8,5 +11,4 @@
      "ms-vscode.azure-account",
      "ms-vscode.vscode-node-azure-pack",
   ],
-  "settings": {"workbench.colorTheme": "Red",},
 }
